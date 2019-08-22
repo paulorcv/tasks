@@ -97,6 +97,11 @@ export class Agenda extends Component {
     this.setState({ tasks, showAddTask: false }, this.filterTasks);
   };
 
+  deleteTask = id => {
+    const tasks = this.state.tasks.filter(task => task.id !== id);
+    this.setState({ tasks }, this.filterTasks);
+  };
+
   filterTasks = () => {
     let visibleTasks = null;
     if (this.state.showDoneTasks) {
@@ -163,7 +168,11 @@ export class Agenda extends Component {
             data={this.state.visibleTasks}
             keyExtractor={item => `${item.id}`}
             renderItem={({ item }) => (
-              <Task {...item} toggleTask={this.toggleTask} />
+              <Task
+                {...item}
+                toggleTask={this.toggleTask}
+                onDelete={this.deleteTask}
+              />
             )}
           />
         </View>
