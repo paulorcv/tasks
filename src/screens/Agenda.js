@@ -19,68 +19,7 @@ import AddTasks from './AddTasks';
 
 export class Agenda extends Component {
   state = {
-    tasks: [
-      {
-        id: Math.random(),
-        desc: 'Ler códigos Github',
-        estimateAt: new Date(),
-        doneAt: new Date(),
-      },
-      {
-        id: Math.random(),
-        desc: 'Concluir o curso',
-        estimateAt: new Date(),
-        doneAt: null,
-      },
-      {
-        id: Math.random(),
-        desc: 'Ler códigos Github',
-        estimateAt: new Date(),
-        doneAt: new Date(),
-      },
-      {
-        id: Math.random(),
-        desc: 'Concluir o curso',
-        estimateAt: new Date(),
-        doneAt: null,
-      },
-      {
-        id: Math.random(),
-        desc: 'Ler códigos Github',
-        estimateAt: new Date(),
-        doneAt: new Date(),
-      },
-      {
-        id: Math.random(),
-        desc: 'Concluir o curso',
-        estimateAt: new Date(),
-        doneAt: null,
-      },
-      {
-        id: Math.random(),
-        desc: 'Ler códigos Github',
-        estimateAt: new Date(),
-        doneAt: new Date(),
-      },
-      {
-        id: Math.random(),
-        desc: 'Concluir o curso',
-        estimateAt: new Date(),
-        doneAt: null,
-      },
-      {
-        id: Math.random(),
-        desc: 'Ler códigos Github',
-        estimateAt: new Date(),
-        doneAt: new Date(),
-      },
-      {
-        id: Math.random(),
-        desc: 'Concluir o curso',
-        estimateAt: new Date(),
-        doneAt: null,
-      },
-    ],
+    tasks: [],
     visibleTasks: [],
     showDoneTasks: true,
     showAddTask: false,
