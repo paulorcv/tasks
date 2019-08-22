@@ -124,7 +124,7 @@ export class Agenda extends Component {
     this.filterTasks();
   };
 
-  toggleTask = id => {
+  onToggleTask = id => {
     const tasks = this.state.tasks.map(task => {
       if (task.id === id) {
         task = { ...task };
@@ -170,7 +170,7 @@ export class Agenda extends Component {
             renderItem={({ item }) => (
               <Task
                 {...item}
-                toggleTask={this.toggleTask}
+                onToggleTask={this.onToggleTask}
                 onDelete={this.deleteTask}
               />
             )}
