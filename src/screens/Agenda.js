@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Platform,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import todayImage from '../../assets/imgs/today.jpg';
@@ -50,6 +51,7 @@ export class Agenda extends Component {
       visibleTasks = this.state.tasks.filter(pending);
     }
     this.setState({ visibleTasks });
+    AsyncStorage.setItem('@tasks', JSON.stringify(this.state.tasks));
   };
 
   toggleFilter = () => {
@@ -59,8 +61,10 @@ export class Agenda extends Component {
     );
   };
 
-  componentDidMount = () => {
-    this.filterTasks();
+  componentDidMount = async () => {
+    const data = await AsyncStorage.getItem('@tasks');
+    const tasks = JSON.parse(data) || [];
+    this.setState({ tasks }, this.filterTasks());
   };
 
   onToggleTask = id => {
