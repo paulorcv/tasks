@@ -6,6 +6,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   Alert,
+  AsyncStorage,
 } from 'react-native';
 import axios from 'axios';
 import { server, showError } from '../common';
@@ -31,6 +32,7 @@ export default class Auth extends Component {
       axios.defaults.headers.common[
         'Authorization'
       ] = `bearer ${res.data.token}`; // a partir deste momento qualquer requisicao com o axios vai enviar este header
+      AsyncStorage.setItem('userData', JSON.stringify(res.data));
       this.props.navigation.navigate('Home', res.data);
     } catch (err) {
       Alert.alert('Erro', 'Falha no login');
