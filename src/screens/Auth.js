@@ -6,8 +6,9 @@ import {
   ImageBackground,
   TouchableOpacity,
   Alert,
-  AsyncStorage,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+
 import axios from 'axios';
 import { server, showError } from '../common';
 import AuthInput from '../components/AuthInput';

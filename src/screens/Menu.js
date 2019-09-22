@@ -1,10 +1,25 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Gravatar } from 'react-native-gravatar';
 import { DrawerItems } from 'react-navigation';
 import commonStyles from '../commonStyles';
+import axios from 'axios';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function Menu(props) {
+export default props => {
+  const logout = () => {
+    delete axios.defaults.headers.common['Authorization'];
+    AsyncStorage.removeItem('userData');
+    props.navigation.navigate('Loading');
+  };
+
   return (
     <ScrollView>
       <View style={styles.header}>
@@ -23,13 +38,17 @@ export default function Menu(props) {
               {props.navigation.getParam('email')}
             </Text>
           </View>
+          <TouchableOpacity onPress={logout}>
+            <View style={styles.logoutIcon}>
+              <Icon name='sign-out' size={30} color='#800' />
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
       <DrawerItems {...props} />
     </ScrollView>
   );
-}
-
+};
 const styles = StyleSheet.create({
   header: {
     borderBottomWidth: 1,
@@ -41,7 +60,7 @@ const styles = StyleSheet.create({
     fontFamily: commonStyles.fontFamily,
     fontSize: 30,
     paddingTop: 30,
-    padding: 20,
+    padding: 10,
   },
   avatar: {
     width: 60,
@@ -71,5 +90,10 @@ const styles = StyleSheet.create({
   userInfo: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  logoutIcon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 20,
   },
 });

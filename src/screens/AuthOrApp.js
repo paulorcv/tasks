@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {
-  View,
-  ActivityIndicator,
-  StyleSheet,
-  AsyncStorage,
-} from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class AuthOrApp extends Component {
   componentWillMount = async () => {
