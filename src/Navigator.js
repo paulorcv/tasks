@@ -25,12 +25,12 @@ const MenuRoutes = {
     navigationOptions: {
       title: 'Semana',
     },
-    Month: {
-      name: 'Month',
-      screen: props => <Agenda title='Mês' daysAhead={30} {...props} />,
-      navigationOptions: {
-        title: 'Mês',
-      },
+  },
+  Month: {
+    name: 'Month',
+    screen: props => <Agenda title='Mês' daysAhead={30} {...props} />,
+    navigationOptions: {
+      title: 'Mês',
     },
   },
 };
